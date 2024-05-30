@@ -12,13 +12,14 @@ class Connection {
 	private const USER_PASSWORD = 'password';
 	private const DB_NAME = 'dbProduct';
 
-	private $dsn = 'mysql:host=' . Connection::HOST . ';dbname=' . Connection::DB_NAME  . ';charset=utf8';
+	private const DSN = 'mysql:host=' . Connection::HOST . ';dbname=' . Connection::DB_NAME  . ';charset=utf8';
+	
 	private $db = null;
 	private $errors = [];
 
 	public function __construct() {
 
-		$this->db = new PDO($this->dsn, Connection::USER_NAME, Connection::USER_PASSWORD);
+		$this->db = new PDO(Connection::DSN, Connection::USER_NAME, Connection::USER_PASSWORD);
 		$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
